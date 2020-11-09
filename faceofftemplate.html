@@ -22,22 +22,49 @@
 
     /* define instructions trial */
     var instructions = {
-      type: "html-keyboard-response",
-      stimulus: "<p>In this experiment, a circle will appear in the center " +
-          "of the screen.</p><p>If the circle is <strong>blue</strong>, " +
-          "press the letter F on the keyboard as fast as you can.</p>" +
-          "<p>If the circle is <strong>orange</strong>, press the letter J " +
-          "as fast as you can.</p>" +
-          "<div style='width: 700px;'>"+
-          "<div style='float: left;'><img src='img/blue.png'></img>" +
-          "<p class='small'><strong>Press the F key</strong></p></div>" +
-          "<div class='float: right;'><img src='img/orange.png'></img>" +
-          "<p class='small'><strong>Press the J key</strong></p></div>" +
-          "</div>"+
-          "<p>Press any key to begin.</p>",
-      post_trial_gap: 2000
-    };
+        timeline: [
+            {
+                type: 'html-keyboard-response',
+                stimulus: "<p>During this experiment you will be asked to learn a series of faces,"+
+                          " which will vary in facial expression.</p>"+
+                          "<p>The images will be presented in varying degrees of expression,"+
+                          " and your task is to remember the expression of each face.</p>" +
+                          "<p>You will have 4 seconds to learn each face during the study phase.</p>" +
+                          "<p>Press any key to continue.</p>",
+            },
+            /*example of expressions*/
+            {
+                type: 'html-keyboard-response',
+                stimulus: "<div style='float: left;'><img src='img/example.png'></img>"+
+                          "<p>Press any key to continue.</p>",
+            },
+
+            {
+                type: 'html-keyboard-response',
+                stimulus: "<p>We will then ask you to reconstruct the each face that you studied.<p>"+
+                          "<p>For some faces, you will be asked to reconstruct the face immediately after viewing it.<p>"+
+                          "<p>For other faces, you will be asked to reconstruct the face in a separate memory test phase"+
+                          " after you have learned a number of faces. This memory test will come at the end of each block."+
+                          "<p>In the memory test, there may be some new faces presented.<p>"+
+                          "<p>Press any key to continue.</p>",
+            },
+
+            {
+                type: 'html-keyboard-response',
+                stimulus: "<p>During the memory test phase only, you will also be asked to rate how vividly you remember that face"+
+                          " on a scale of 1 (I don't remember this face) to 6 (I remember this face very vividly).<p>"+
+                          "<p>Using the slider, make your response.<p>"+
+                          "<p>If you don't remember the face at all, select 1.<p>"+
+                          "<p>Press any key to continue.</p>",
+            }
+        ],
+    }
     timeline.push(instructions);
+
+    // var example_tests = {
+    //     timeline: [
+    //     ],
+    // }
 
     /* Display faces for perception tests */
     var face_display_perception = {
