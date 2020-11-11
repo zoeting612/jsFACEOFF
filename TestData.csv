@@ -1,0 +1,8 @@
+ActorGender,ActorRace,ActorID,Directory,Filename,ExpressionIntensity,TestImage
+Male,Other,test1,/img/testimgs,test1.jpg,26,yes
+shape,circle,orange,/img/testimgs,orange.jpg,4,no
+Female,Caucasian,test2,/img/testimgs,test2.jpg,15,yes
+Male,Caucasian,test3,/img/testimgs,test3.jpg,3,yes
+shape,circle,blue,/img/testimgs,blue.jpg,12,no
+Female,Other,test4,/img/testimgs,test4.jpg,1,yes
+Male,Caucasian,test5,/img/testimgs,test5.jpg,2,yes
