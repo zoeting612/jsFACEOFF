@@ -39,8 +39,11 @@ const processData = (err, data) => {
     return test_images
   }
   //test this function
-  var images = perception_images()
-  console.log(images)
+  var test_images = perception_images()
+  
+  for (var i=0; i<test_images.length;i++){
+    console.log(test_images[i])
+  }
 }
 
 fs.createReadStream(csvFile)
