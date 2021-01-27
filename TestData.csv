@@ -1,8 +1,8 @@
-ActorGender,ActorRace,ActorID,Directory,Filename,ExpressionIntensity,TestImage
-Male,Other,test1,/img/testimgs/,test1.jpg,26,yes
-shape,circle,orange,/img/testimgs/,orange.jpg,4,no
-Female,Caucasian,test2,/img/testimgs/,test2.jpg,15,yes
-Male,Caucasian,test3,/img/testimgs/,test3.jpg,3,yes
-shape,circle,blue,/img/testimgs/,blue.jpg,12,no
-Female,Other,test4,/img/testimgs/,test4.jpg,1,yes
-Male,Caucasian,test5,/img/testimgs/,test5.jpg,2,yes
+TrialNumber,EncodedImage,Directory,Filename,Condition,MemoryProbe,ExpressionIntensity,TestImage,ActorGender,ActorRace,ActorID,FacialExpression1,FacialExpression2,Block
+1,yes,/img/testimgs/,test1.jpg,Memory,Lure,26,yes,Male,Other,test1,neutral,happy_closed,1
+1,no,/img/testimgs/,orange.jpg,Memory,Lure,4,no,shape,circle,orange,neutral,happy_closed,1
+1,yes,/img/testimgs/,test2.jpg,Memory,Lure,15,yes,Female,Caucasian,test2,neutral,happy_closed,1
+1,yes,/img/testimgs/,test3.jpg,Memory,Lure,3,yes,Male,Caucasian,test3,neutral,happy_closed,1
+1,no,/img/testimgs/,blue.jpg,Memory,Lure,12,no,shape,circle,blue,neutral,happy_closed,1
+1,yes,/img/testimgs/,test4.jpg,Memory,Lure,1,yes,Female,Other,test4,neutral,happy_closed,1
+1,yes,/img/testimgs/,test5.jpg,Memory,Lure,2,yes,Male,Caucasian,test5,neutral,happy_closed,1
