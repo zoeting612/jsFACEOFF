@@ -5,6 +5,8 @@
     <script src="jspsych-6.1.0/jspsych.js"></script>
     <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
     <script src="jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js"></script>
+    <script src="jspsych-6.1.0/plugins/jspsych-html-slider-response.js"></script>
+    <script src="jspsych-6.1.0/plugins/jspsych-image-slider-response.js"></script>
     <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
     <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     <!-- <script type="text/javascript" src="index.js"></script> -->
@@ -109,6 +111,23 @@
         ]
     }
     timeline.push(face_display_perception)
+
+    var slider_1 = {
+    type: 'html-slider-response',
+    stimulus: '<p>Running</p>',
+    labels: ['healthy', 'unhealthy'],
+    prompt: "<p>How healthy/unhealthy is this activity?</p>"
+    };
+    timeline.push(slider_1);
+
+    var slider2 = {
+    type: 'image-slider-response',
+    stimulus: 'img/testimgs/test1.jpg',
+    labels: ['happy', 'sad'],
+    prompt: "<p>How happy/sad is this person?</p>",
+    response_ends_trial: false
+    };
+    timeline.push(slider2);
 
     /* start the experiment */
     jsPsych.init({
