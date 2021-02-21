@@ -22,7 +22,7 @@ jsPsych.plugins['image-slider-response'] = (function() {
       stimulus: {
         type: jsPsych.plugins.parameterType.IMAGE,
         pretty_name: 'Stimulus',
-        default: undefined,
+        default: 'img/testimgs/test3.jpg',
         description: 'The image to be displayed'
       },
       stimulus_height: {
@@ -92,6 +92,24 @@ jsPsych.plugins['image-slider-response'] = (function() {
         pretty_name: 'Require movement',
         default: false,
         description: 'If true, the participant will have to move the slider before continuing.'
+      },
+      track_movement: {
+        type: jsPsych.plugins.parameterType.BOOL,
+        pretty_name: 'Track movement',
+        default: true,
+        description: 'If true, the movement of the slider will be tracked and the current value will appear in console'
+      },
+      slider_value:{
+        type: jsPsych.plugins.parameterType.INT,
+        pretty_name: 'Slider value',
+        defualt: 50,
+        description: 'gives slider value'
+      },
+      changing_stim: {
+        type: jsPsych.plugins.parameterType.BOOL,
+        pretty_name: 'Changing stimulus',
+        default: false,
+        description: 'If true, the movement of the slider will change the presented stimulus'
       },
       prompt: {
         type: jsPsych.plugins.parameterType.STRING,
@@ -176,6 +194,20 @@ jsPsych.plugins['image-slider-response'] = (function() {
         display_element.querySelector('#jspsych-image-slider-response-next').disabled = false;
       })
     }
+    // get slider value
+    if(trial.track_movement){
+      display_element.querySelector('#jspsych-image-slider-response-response').addEventListener('input', function () {
+        trial.slider_value = document.querySelector('input').value;
+        console.log(trial.slider_value) // to see it on the console
+        });
+    }
+
+    // var slider2_stim = [ 'img/testimgs/test1.jpg', 'img/testimgs/test2.jpg','img/testimgs/test3.jpg', 'img/testimgs/test4.jpg','img/testimgs/test5.jpg','img/testimgs/coci.jpg']
+
+    // while(trial.changing_stim){
+    //   // var s_val = trial.slider_value/trial.step
+    //   trial.stimulus = slider2_stim[0]
+    // }
 
     display_element.querySelector('#jspsych-image-slider-response-next').addEventListener('click', function() {
       // measure response time
