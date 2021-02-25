@@ -28,22 +28,33 @@
 
 
     var slider_1 = {
-    type: 'html-slider-response',
-    stimulus: '<p>Running</p>',
-    labels: ['healthy', 'unhealthy'],
-    prompt: "<p>How healthy/unhealthy is this activity?</p>"
+      type: 'html-slider-response',
+      stimulus: '<p>Running</p>',
+      labels: ['healthy', 'unhealthy'],
+      prompt: "<p>How healthy/unhealthy is this activity?</p>"
     };
     timeline.push(slider_1);
 
+    var slider2_stim = [ 'img/testimgs/test1.jpg', 'img/testimgs/test2.jpg','img/testimgs/test3.jpg', 'img/testimgs/test4.jpg','img/testimgs/test5.jpg','img/testimgs/coci.jpg']
+    var test =1;
 
     var slider2 = {
-    type: 'image-slider-response',
-    // stimulus: 'img/testimgs/test3.jpg',
-    // changing_stim: true,
-    labels: ['0','1','2','3','4','5'],
-    prompt: "<p>How happy/sad is this person?</p>",
-    step: 20,
-    response_ends_trial: false,
+      type: 'image-slider-response',
+      stimulus: function(){
+        // var slider_val = jsPsych.;
+        // console.log("slider val")
+        // console.log(slider_val)
+        // var s_val = slider_val/20;
+        // return slider2_stim[s_val];
+        if (test == 1){
+          return slider2_stim[test];
+        }
+      },
+      changing_stim: true,
+      labels: ['0','1','2','3','4','5'],
+      prompt: "<p>How happy/sad is this person?</p>",
+      step: 20,
+      response_ends_trial: false,
     };
     timeline.push(slider2);
 

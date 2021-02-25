@@ -22,7 +22,7 @@ jsPsych.plugins['image-slider-response'] = (function() {
       stimulus: {
         type: jsPsych.plugins.parameterType.IMAGE,
         pretty_name: 'Stimulus',
-        default: 'img/testimgs/test3.jpg',
+        default: 'img/testimgs/test1.jpg',
         description: 'The image to be displayed'
       },
       stimulus_height: {
@@ -200,6 +200,11 @@ jsPsych.plugins['image-slider-response'] = (function() {
         trial.slider_value = document.querySelector('input').value;
         console.log(trial.slider_value) // to see it on the console
         });
+    }
+    if(trial.changing_stim){
+      display_element.querySelector('#jspsych-image-slider-response-response').addEventListener('change', function(){
+        display_element.querySelector('jspsych-image-slider-response-stimulus').value = 'img/testimgs/coci.jpg';
+      })
     }
 
     // var slider2_stim = [ 'img/testimgs/test1.jpg', 'img/testimgs/test2.jpg','img/testimgs/test3.jpg', 'img/testimgs/test4.jpg','img/testimgs/test5.jpg','img/testimgs/coci.jpg']
