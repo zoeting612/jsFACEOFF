@@ -22,7 +22,7 @@ jsPsych.plugins['image-slider-response'] = (function() {
       stimulus: {
         type: jsPsych.plugins.parameterType.IMAGE,
         pretty_name: 'Stimulus',
-        default: 'img/testimgs/test1.jpg',
+        default: undefined,
         description: 'The image to be displayed'
       },
       stimulus_height: {
@@ -98,12 +98,6 @@ jsPsych.plugins['image-slider-response'] = (function() {
         pretty_name: 'Track movement',
         default: true,
         description: 'If true, the movement of the slider will be tracked and the current value will appear in console'
-      },
-      slider_value:{
-        type: jsPsych.plugins.parameterType.INT,
-        pretty_name: 'Slider value',
-        defualt: 50,
-        description: 'gives slider value'
       },
       changing_stim: {
         type: jsPsych.plugins.parameterType.BOOL,
@@ -195,24 +189,22 @@ jsPsych.plugins['image-slider-response'] = (function() {
       })
     }
     // get slider value
+    var slider_value = 0;
     if(trial.track_movement){
       display_element.querySelector('#jspsych-image-slider-response-response').addEventListener('input', function () {
-        trial.slider_value = document.querySelector('input').value;
-        console.log(trial.slider_value) // to see it on the console
+        slider_value = document.querySelector('input').value;
+        console.log(slider_value) // to see it on the console
         });
     }
+
+    //for changing stimulus during a trial 
+
     if(trial.changing_stim){
-      display_element.querySelector('#jspsych-image-slider-response-response').addEventListener('change', function(){
-        display_element.querySelector('jspsych-image-slider-response-stimulus').value = 'img/testimgs/coci.jpg';
+      display_element.querySelector('#jspsych-image-slider-response-response').addEventListener('input', function(){
+        end_trial_change_stim();
       })
     }
 
-    // var slider2_stim = [ 'img/testimgs/test1.jpg', 'img/testimgs/test2.jpg','img/testimgs/test3.jpg', 'img/testimgs/test4.jpg','img/testimgs/test5.jpg','img/testimgs/coci.jpg']
-
-    // while(trial.changing_stim){
-    //   // var s_val = trial.slider_value/trial.step
-    //   trial.stimulus = slider2_stim[0]
-    // }
 
     display_element.querySelector('#jspsych-image-slider-response-next').addEventListener('click', function() {
       // measure response time
@@ -235,7 +227,26 @@ jsPsych.plugins['image-slider-response'] = (function() {
       // save data
       var trialdata = {
         "rt": response.rt,
-        "response": response.response
+        "response": response.response,
+        "trial_done": true
+      };
+
+      display_element.innerHTML = '';
+
+      // next trial
+      jsPsych.finishTrial(trialdata);
+    }
+
+    function end_trial_change_stim(){
+
+      jsPsych.pluginAPI.clearAllTimeouts();
+
+      // save data
+      var trialdata = {
+        "rt": response.rt,
+        "response": response.response,
+        "slider_value": slider_value,
+        "trial_done": false
       };
 
       display_element.innerHTML = '';

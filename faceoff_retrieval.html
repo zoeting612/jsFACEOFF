@@ -31,7 +31,8 @@
       type: 'html-slider-response',
       stimulus: '<p>Running</p>',
       labels: ['healthy', 'unhealthy'],
-      prompt: "<p>How healthy/unhealthy is this activity?</p>"
+      prompt: "<p>How healthy/unhealthy is this activity?</p>",
+      data:{trial_done: true}
     };
     timeline.push(slider_1);
 
@@ -41,22 +42,43 @@
     var slider2 = {
       type: 'image-slider-response',
       stimulus: function(){
-        // var slider_val = jsPsych.;
-        // console.log("slider val")
-        // console.log(slider_val)
-        // var s_val = slider_val/20;
-        // return slider2_stim[s_val];
-        if (test == 1){
-          return slider2_stim[test];
+        var slider_val = jsPsych.data.getLastTrialData().values()[0].slider_value;
+        var default_start = 60
+        if(!jsPsych.data.getLastTrialData().values()[0].trial_done){
+          var s_val = slider_val/20;
+        }
+        else{
+          var s_val = default_start/20;
+        }
+        return slider2_stim[s_val];
+      },
+      start: function(){
+        console.log(jsPsych.data.getLastTrialData().values()[0].trial_done)
+        if(!jsPsych.data.getLastTrialData().values()[0].trial_done){
+          return jsPsych.data.getLastTrialData().values()[0].slider_value;
         }
       },
       changing_stim: true,
       labels: ['0','1','2','3','4','5'],
       prompt: "<p>How happy/sad is this person?</p>",
       step: 20,
-      response_ends_trial: false,
+      response_ends_trial: true,
+      render_on_canvas: true
     };
-    timeline.push(slider2);
+    timeline.push(slider2)
+
+    var loop_node = {
+        timeline: [slider2],
+        loop_function: function(data){
+            if(jsPsych.data.getLastTrialData().values()[0].trial_done){
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    timeline.push(loop_node);
 
     /* start the experiment */
     jsPsych.init({
