@@ -37,7 +37,20 @@
     timeline.push(slider_1);
 
     var slider2_stim = [ 'img/testimgs/test1.jpg', 'img/testimgs/test2.jpg','img/testimgs/test3.jpg', 'img/testimgs/test4.jpg','img/testimgs/test5.jpg','img/testimgs/coci.jpg']
-    var test =1;
+    var n_loaded = 0;
+
+    jsPsych.pluginAPI.preloadImages(slider2_stim, function(){ testFunc(); }, function(file) { updateLoadedCount(file); });
+
+    function testFunc(){
+      console.log("done loading");
+    }
+
+    function updateLoadedCount(file){
+        n_loaded++;
+        var percentcomplete = n_loaded / slider2_stim.length * 100;
+        console.log('Loaded '+percentcomplete+'% of images');
+    }
+
 
     var slider2 = {
       type: 'image-slider-response',
