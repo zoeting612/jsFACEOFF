@@ -8,7 +8,7 @@
     <script src="jspsych-6.1.0/plugins/jspsych-html-slider-response.js"></script>
     <script src="jspsych-6.1.0/plugins/jspsych-image-slider-response.js"></script>
     <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
-    <script src = "test_csv_reading.js"></script>
+    <script src = "test_json_file.js"></script>
     <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     <!-- <script type="text/javascript" src="index.js"></script> -->
   </head>
@@ -82,6 +82,23 @@
     // })
 
 
+    function get_stims(json){
+      var listy = []
+      for (var i = 0; i<json.length; i++){
+        var stimuli_from_json = {
+          "face" : json[i].Directory + json[i].Filename,
+        };
+        console.log(stimuli_from_json)
+        if (json[i].EncodedImage == "yes"){
+          listy.push(stimuli_from_json);
+        }
+      }
+      console.log(listy)
+      return listy;
+    }
+
+    var stims_json = get_stims(jsonfile);
+
     /* Display faces for perception tests */
     var face_display_perception = {
         timeline: [
@@ -102,7 +119,8 @@
                 trial_duration: 4000
             }
         ],
-        timeline_variables: test_stim
+        // timeline_variables: test_stim
+        timeline_variables : stims_json
     }
     timeline.push(face_display_perception)
 

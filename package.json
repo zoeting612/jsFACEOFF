@@ -1,0 +1,28 @@
+{
+  "name": "jspsych_experiments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "csv_to_array.js",
+  "dependencies": {
+    "csv-parse": "^4.14.0",
+    "csvtojson": "^2.0.10",
+    "d3-dsv": "^2.0.0",
+    "neat-csv": "^5.2.0",
+    "npm-check": "^5.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/memobc/jsFACEOFF.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/memobc/jsFACEOFF/issues"
+  },
+  "homepage": "https://github.com/memobc/jsFACEOFF#readme"
+}
